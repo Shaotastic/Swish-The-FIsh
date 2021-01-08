@@ -18,11 +18,11 @@ public class PlayerMovement : MonoBehaviour
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
 
-        if(h > 0)
+        if(h > 0.1f)
         {
             spriteRenderer.flipX = true;
         }
-        else
+        else if (h < -0.1f)
             spriteRenderer.flipX = false;
 
         transform.position += new Vector3(h * Time.deltaTime * speed, v * Time.deltaTime * speed, 0);

@@ -2,16 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PositiveEmotion
-{ 
-    Happy,
-}
-
-public enum NegativeEmotion
-{
-    Sad,
-}
-
 public enum Emotions
 {
     Happy,
@@ -25,5 +15,5 @@ public class Emotion : ScriptableObject
 
     public List<Emotions> oppositeEmotions;
 
-    public Sprite sprite;
+    [SerializeField] private Sprite sprite;
 }

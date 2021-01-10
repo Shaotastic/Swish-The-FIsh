@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
@@ -55,11 +54,6 @@ public class Shark : MonoBehaviour
         transform.position = Vector3.zero;
     }
 
-    private void Instance_OnGameOver()
-    {
-        //throw new System.NotImplementedException();
-    }
-
     // Update is called once per frame
     private void Update()
     {
@@ -89,10 +83,6 @@ public class Shark : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider collision)
-    {
-    }
-
     IEnumerator DelayFadeOut()
     {        
         yield return new WaitForSeconds(m_DisappearTime);
@@ -114,7 +104,7 @@ public class Shark : MonoBehaviour
 
     void AteWrongFish()
     {
-        if (m_Size > 1)
+        if (m_Size > 0.5f)
             m_Size -= m_SizeIncrement;
         transform.DOScale(m_Size, 0.5f);
     }

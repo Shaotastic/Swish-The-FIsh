@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class FishManager : MonoBehaviour
@@ -105,7 +104,7 @@ public class FishManager : MonoBehaviour
     {
         int index = m_FishList.IndexOf(fish);
 
-        Destroy(fish.gameObject);
+        fish.BeginDeath();
         
         m_FishIndexes.Push(index);
     }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum Difficulty
 {
@@ -18,7 +15,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Rect AreaBoundaries;
 
     public static GameManager Instance;
-
 
     public delegate void Scoring();
 

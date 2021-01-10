@@ -1,18 +1,10 @@
 ﻿using UnityEngine;
 
-public enum Difficulty
-{
-    Easy = 0,
-    Mediem,
-    Hard
-}
-
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] int m_Errors = 0;
-    [SerializeField] int m_Score;
-    [SerializeField] Difficulty m_Difficulty;
-    [SerializeField] public Rect AreaBoundaries;
+    [SerializeField] private int m_Errors = 0;
+    [SerializeField] private int m_Score;
+    [SerializeField] private Rect AreaBoundaries;
 
     public static GameManager Instance;
 
@@ -25,7 +17,6 @@ public class GameManager : MonoBehaviour
 
     public event GameState OnGameOver;
     public event GameState OnGameStart;
-    public event GameState OnGamePause;
     public event GameState OnGameReset;
 
     internal int GetErrorCount()
@@ -43,6 +34,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
     }
 
+    //Used for the onClick event to start game
     public void GameStart()
     {
         OnGameStart();
@@ -56,13 +48,13 @@ public class GameManager : MonoBehaviour
         OnGameReset();
     }
 
-    public void ScorePoint()
+    internal void ScorePoint()
     {
         m_Score++;
         OnScorePoint();
     }
 
-    public void ErrorPoint()
+    internal void ErrorPoint()
     {
         m_Errors++;
         OnErrorPoint();
@@ -73,6 +65,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Draws the area boundary set 
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(new Vector3(AreaBoundary().xMin, AreaBoundary().yMin), new Vector3(AreaBoundary().xMin, AreaBoundary().yMax));
@@ -83,13 +76,14 @@ public class GameManager : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(new Vector3(AreaBoundary().xMax, AreaBoundary().yMax), new Vector3(AreaBoundary().xMax, AreaBoundary().yMin));
     }
-
+    
     internal Rect AreaBoundary()
     {
-        Rect rect = new Rect();
-
-        rect.position = new Vector2(AreaBoundaries.x - AreaBoundaries.width, AreaBoundaries.y - AreaBoundaries.height);
-        rect.size = new Vector2(AreaBoundaries.width * 2, AreaBoundaries.height * 2);
+        Rect rect = new Rect
+        {
+            position = new Vector2(AreaBoundaries.x - AreaBoundaries.width, AreaBoundaries.y - AreaBoundaries.height),
+            size = new Vector2(AreaBoundaries.width * 2, AreaBoundaries.height * 2)
+        };
 
         return rect;
     }

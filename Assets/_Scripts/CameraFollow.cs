@@ -2,10 +2,10 @@
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] Transform m_Target;
+    [SerializeField] Transform m_Target;                //The target the camera has to follow
 
-    [SerializeField] float m_CameraSpeed = 1;
-    [SerializeField] float m_CameraZPosition = -10;
+    [SerializeField] float m_CameraSpeed = 1;          
+    [SerializeField] float m_CameraZPosition = -10;     //The camera z position offset
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +31,4 @@ public class CameraFollow : MonoBehaviour
 
         transform.position = newPosition;
     }
-
-
 }

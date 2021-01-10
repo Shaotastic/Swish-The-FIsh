@@ -6,7 +6,7 @@ public class EmotionManager : MonoBehaviour
 {
     public static EmotionManager Instance;
 
-    [SerializeField] List<Emotion> m_EmotionList;
+    [SerializeField] private List<Emotion> m_EmotionList;
 
     private void Awake()
     {
@@ -14,7 +14,7 @@ public class EmotionManager : MonoBehaviour
             Instance = this;
     }
 
-    public Emotion GetRandomEmotion()
+    internal Emotion GetRandomEmotion()
     {
         if (m_EmotionList == null)
             return null;
@@ -22,7 +22,7 @@ public class EmotionManager : MonoBehaviour
         return m_EmotionList[Random.Range(0, m_EmotionList.Count)];
     }
 
-    public bool CompareEmotion(Emotion mainEmotion, Emotion oppositeEmotion)
+    internal bool CompareEmotion(Emotion mainEmotion, Emotion oppositeEmotion)
     {
         foreach(Emotions emo in mainEmotion.oppositeEmotions)
         {

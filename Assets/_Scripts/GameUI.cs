@@ -3,17 +3,22 @@ using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
 
+//This class handles all the UI elements in the game
+
 public class GameUI : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI m_ScoreText;
-
-    [Header("The five X's for error images")]
-    [SerializeField] Image[] m_RedErrors;
 
     [Header("Game UI Screens")]
     [SerializeField] GameObject m_StartScreen;
     [SerializeField] GameObject m_GameScreen;
     [SerializeField] GameObject m_GameOverScreen;
+
+    [SerializeField] TextMeshProUGUI m_ScoreText;
+
+    [Header("The five X's for error images")]
+    [SerializeField] Image[] m_RedErrors;
+
+
 
     // Start is called before the first frame update
     void Start()

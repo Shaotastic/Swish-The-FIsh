@@ -5,16 +5,16 @@ public class FishManager : MonoBehaviour
 {
     public static FishManager Instance;
 
-    [SerializeField] int m_StartingFish;
-    [SerializeField] int m_FishCount;
+    [SerializeField] List<Fish> m_FishType;         //For all types of fish that is going to be used in the game
 
-    [SerializeField] List<Fish> m_FishType;
+    [SerializeField] int m_StartingFish;            //The max amount of fishes that are able to be spawned
+    [SerializeField] int m_FishCount;               //Keeps track of the total amount of fish that have spawned
 
-    [SerializeField] List<Fish> m_FishList;
+    [SerializeField] List<Fish> m_FishList;         //Tracks all spawned fish during gameplay
 
-    [SerializeField] Stack<int> m_FishIndexes;
+    [SerializeField] Stack<int> m_FishIndexes;      //Ties with m_FishList, keeps track of destroyed fish index
 
-    [SerializeField] float m_MinFishSpeed = 2;
+    [SerializeField] float m_MinFishSpeed = 2;      //Min and Max speed for the fishes
     [SerializeField] float m_MaxFishSpeed = 8;
 
     private void Awake()
@@ -31,7 +31,7 @@ public class FishManager : MonoBehaviour
 
     private void Instance_OnGameOver()
     {
-        CancelInvoke("SpawnFish");
+        CancelInvoke(nameof(SpawnFish));
     }
 
     private void Instance_OnGameReset()
@@ -41,7 +41,6 @@ public class FishManager : MonoBehaviour
             if (m_FishList[i])
             {
                 Fish tempFish = m_FishList[i];
-                //m_FishList.RemoveAt(i);
                 Destroy(tempFish.gameObject);
             }
         }
@@ -52,13 +51,8 @@ public class FishManager : MonoBehaviour
 
     private void Instance_OnGameStart()
     {
-        InvokeRepeating("SpawnFish", 0, 1);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
         m_FishList = new List<Fish>();
+        InvokeRepeating(nameof(SpawnFish), 0, 1);
     }
 
     public void SpawnFish()
@@ -92,10 +86,11 @@ public class FishManager : MonoBehaviour
 
     public Vector3 RandomWaypoint()
     {
-        Vector3 newPoint = new Vector3();
-
-        newPoint.x = Random.Range(GameManager.Instance.AreaBoundary().xMin, GameManager.Instance.AreaBoundary().xMax);
-        newPoint.y = Random.Range(GameManager.Instance.AreaBoundary().yMin, GameManager.Instance.AreaBoundary().yMax);
+        Vector3 newPoint = new Vector3
+        {
+            x = Random.Range(GameManager.Instance.AreaBoundary().xMin, GameManager.Instance.AreaBoundary().xMax),
+            y = Random.Range(GameManager.Instance.AreaBoundary().yMin, GameManager.Instance.AreaBoundary().yMax)
+        };
 
         return newPoint;
     }

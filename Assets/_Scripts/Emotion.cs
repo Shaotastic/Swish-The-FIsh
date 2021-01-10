@@ -5,7 +5,11 @@ using UnityEngine;
 public enum Emotions
 {
     Happy,
-    Sad
+    Sad,
+    Love,
+    Hate,
+    Confident,
+    Fear
 }
 
 [CreateAssetMenu(fileName = "New Emotion", menuName = "Emotions")]
@@ -15,5 +19,5 @@ public class Emotion : ScriptableObject
 
     public List<Emotions> oppositeEmotions;
 
-    [SerializeField] private Sprite sprite;
+    public Sprite sprite;
 }

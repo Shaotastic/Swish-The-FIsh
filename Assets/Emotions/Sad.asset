@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainEmotion: 1
   oppositeEmotions: 00000000
-  sprite: {fileID: -3215154633515902656, guid: 3e6cdb0914cbdda44b8e94f02154cf19, type: 3}
+  sprite: {fileID: 7841514048836434547, guid: 9ac4fa58fbf7fbe4f8b062233eb0d201, type: 3}

@@ -18,7 +18,8 @@ public class CameraFollow : MonoBehaviour
         if (!m_Target)
             return;
 
-        FollowTarget();                
+        FollowTarget();
+        ClampTargetPosition(m_Target);
     }
 
     void FollowTarget()
@@ -30,5 +31,16 @@ public class CameraFollow : MonoBehaviour
         newPosition.z = m_CameraZPosition;
 
         transform.position = newPosition;
+    }
+
+    //Clamps the targets position in the screen;
+    void ClampTargetPosition(Transform target)
+    {
+        Vector3 clampPosition = Camera.main.WorldToViewportPoint(transform.position);
+
+        clampPosition.x = Mathf.Clamp01(clampPosition.x);
+        clampPosition.y = Mathf.Clamp01(clampPosition.y);
+
+        target.position = Camera.main.ViewportToWorldPoint(clampPosition);
     }
 }

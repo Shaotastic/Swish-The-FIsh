@@ -35,13 +35,8 @@ public class Shark : MonoBehaviour
 
         m_Rotation = transform.rotation;
     }
-    private void Update()
-    {
-        ClampTargetPosition(transform);
-    }
     private void LateUpdate()
     {
-
         //Because the sprite is currently a child of the text, rotate the text gameobject
         m_EmotionText.transform.rotation = m_Rotation;
     }
@@ -111,16 +106,5 @@ public class Shark : MonoBehaviour
             m_CurrentSize -= m_SizeIncrement;
 
         transform.DOScale(m_CurrentSize, 0.5f);
-    }
-
-    //Clamps the targets position in the screen;
-    void ClampTargetPosition(Transform target)
-    {
-        Vector3 clampPosition = Camera.main.WorldToViewportPoint(transform.position);
-
-        clampPosition.x = Mathf.Clamp01(clampPosition.x);
-        clampPosition.y = Mathf.Clamp01(clampPosition.y);
-
-        target.position = Camera.main.ViewportToWorldPoint(clampPosition);
     }
 }

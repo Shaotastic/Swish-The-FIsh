@@ -26,6 +26,8 @@ Other scripts
 
   Fish.cs:              Handles all the fish properties and its behaviour within the game
   
-The emotions are scriptable objects because I believe it makes it mroe dynamic for the designers/developer to easily implement as many emotions as they can 
   Emotion.cs:           Holds the main emotion type, list of opposite emotions (Incase the emotion matches with more than one), and the sprite associated with the emotion
+  The emotions are scriptable objects because I believe it makes it mroe dynamic for the designers/developer to easily implement as many emotions as they can 
+  
+  
   

@@ -1,5 +1,8 @@
 # Swish-the-Fish
 Swish the Fish Prototype
+
+HOW TO PLAY: Click and Drag the shark around the screen and eat the opposite emotion the shark has. If you eat 5 you lose. 
+
 Here is a document on how this prototype works and the scripts behind the functionality and the design choices of the prototype. 
 
 The Main Scene:
